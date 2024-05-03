@@ -1,0 +1,77 @@
+{
+	"cities": [
+		{
+			"cityName": "Lisbon",
+			"country": "Portugal",
+			"emoji": "🟡",
+			"date": "2027-10-31T15:59:59.138Z",
+			"notes": "My favorite city so far!",
+			"position": {
+				"lat": 38.727881642324164,
+				"lng": -9.140900099907554
+			},
+			"id": 73930385
+		},
+		{
+			"cityName": "Madrid",
+			"country": "Spain",
+			"emoji": "🔰",
+			"date": "2027-07-15T08:22:53.976Z",
+			"notes": "",
+			"position": {
+				"lat": 40.46635901755316,
+				"lng": -3.7133789062500004
+			},
+			"id": 17806751
+		},
+		{
+			"cityName": "Berlin",
+			"country": "Germany",
+			"emoji": "🏵",
+			"date": "2027-02-12T09:24:11.863Z",
+			"notes": "Amazing 😃",
+			"position": {
+				"lat": 52.53586782505711,
+				"lng": 13.376933665713324
+			},
+			"id": 98443197
+		},
+		{
+			"cityName": "Paris",
+			"country": "France",
+			"emoji": "🗼",
+			"date": "2024-05-01T12:00:00.000Z",
+			"notes": "Absolutely stunning views!",
+			"position": {
+				"lat": 48.8566,
+				"lng": 2.3522
+			},
+			"id": "12345678"
+		},
+		{
+			"cityName": "Kyoto",
+			"country": "Japan",
+			"emoji": "⛩️",
+			"date": "2024-05-01T12:00:00.000Z",
+			"notes": "Exquisite temples and serene gardens.",
+			"position": {
+				"lat": 35.0116,
+				"lng": 135.7681
+			},
+			"id": "23456789"
+		},
+
+		{
+			"cityName": "Cape Town",
+			"country": "South Africa",
+			"emoji": "🌅",
+			"date": "2024-05-01T12:00:00.000Z",
+			"notes": "Breath-taking sunsets by the beach.",
+			"position": {
+				"lat": -33.9249,
+				"lng": 18.4241
+			},
+			"id": "34567890"
+		}
+	]
+}
