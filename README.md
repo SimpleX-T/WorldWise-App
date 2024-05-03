@@ -2,7 +2,7 @@
 
 WorldWise is a web application that allows users to keep record of different cities around the world that they have visited. It provides an interactive map interface where users can view markers for various cities and add information about each one.
 
-<img src="https://img.freepik.com/premium-photo/3d-earth-globe-with-world-map-ai-generated-art-work_844516-114.jpg" width="400" height="auto" alt="World Map">
+<center><img src="https://img.freepik.com/premium-photo/3d-earth-globe-with-world-map-ai-generated-art-work_844516-114.jpg" width="200" height="auto" alt="World Map"></center>
 
 ## Features
 
