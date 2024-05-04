@@ -13,6 +13,7 @@ import { useProvider } from "./contexts/ContextProvider";
 import { useGeolocation } from "../hooks/useGeolocation";
 import Button from "./Button";
 import { useGeocoding } from "../hooks/useGeocoding";
+import ReactCountryFlag from "react-country-flag";
 
 function Map() {
 	const [mapPosition, setMapPosition] = useState([40, -3.7]);
@@ -59,7 +60,12 @@ function Map() {
 					return (
 						<Marker position={[lat, lng]} key={city.id}>
 							<Popup>
-								<span>{city.emoji}</span>
+								<span>
+									<ReactCountryFlag
+										countryCode={city.emoji}
+										svg
+									/>
+								</span>
 								<span>{city.cityName}</span>
 							</Popup>
 						</Marker>

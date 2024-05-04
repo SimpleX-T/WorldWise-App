@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
 import { useProvider } from "./contexts/ContextProvider";
+import ReactCountryFlag from "react-country-flag";
 
 const formatDate = (date) =>
 	new Intl.DateTimeFormat("en", {
@@ -23,7 +24,9 @@ export default function CityItem({ city }) {
 					currentCity.id === id ? styles["cityItem--active"] : ""
 				}`}
 				to={`${id}?lat=${lat}&lng=${lng}`}>
-				<span className={styles.emoji}>{emoji}</span>
+				<span className={styles.emoji}>
+					<ReactCountryFlag countryCode={emoji} svg />
+				</span>
 				<h3 className={styles.name}>{cityName}</h3>
 				<time className={styles.date}>({formatDate(date)})</time>
 				<button className={styles.deleteBtn}>&times;</button>
