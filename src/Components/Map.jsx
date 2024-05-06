@@ -56,9 +56,10 @@ function Map() {
 					url='https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
 				/>
 				{cities.map((city) => {
-					const { lat, lng } = city.position;
 					return (
-						<Marker position={[lat, lng]} key={city.id}>
+						<Marker
+							position={[city.position.lat, city.position.lng]}
+							key={city.id}>
 							<Popup>
 								<span>
 									<ReactCountryFlag

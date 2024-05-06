@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useProvider } from "./contexts/ContextProvider";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
+import ReactCountryFlag from "react-country-flag";
 
 const formatDate = (date) =>
 	new Intl.DateTimeFormat("en", {
@@ -33,7 +34,10 @@ function City() {
 			<div className={styles.row}>
 				<h6>City name</h6>
 				<h3>
-					<span>{emoji}</span> {cityName}
+					<span>
+						<ReactCountryFlag countryCode={emoji} svg />
+					</span>
+					{cityName}
 				</h3>
 			</div>
 

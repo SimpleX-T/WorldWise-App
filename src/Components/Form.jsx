@@ -14,6 +14,7 @@ import { useProvider } from "./contexts/ContextProvider";
 import { useNavigate } from "react-router-dom";
 import ReactCountryFlag from "react-country-flag";
 
+//Wanted to use this function to get the city's emoji from the cityName, but...
 // export function convertToEmoji(countryCode) {
 // 	const codePoints = countryCode
 // 		.toUpperCase()
@@ -49,11 +50,15 @@ function Form() {
 					const res = await fetch(
 						`${BASE_URL}?latitude=${lat}&longitude=${lng}`
 					);
+					if (!res.ok)
+						throw new Error(
+							"Make sure you are connected to the internet and then try again."
+						);
 					const data = await res.json();
 
 					if (!data.countryCode)
 						throw new Error(
-							"That doesn't seem to be a city, click on another city😏"
+							"That doesn't seem to be a city😏, click on another city."
 						);
 
 					setCityName(data.city || data.locality || "");
@@ -70,16 +75,17 @@ function Form() {
 		[lat, lng]
 	);
 
-	async function handleSubmit() {
-		// if (!cityName || !date) return;
+	async function handleSubmit(e) {
+		e.preventDefault();
+		if (!cityName || !date) return;
 
 		const newCity = {
-			position: { lat, lng },
 			cityName,
 			country,
 			emoji,
-			notes,
 			date,
+			notes,
+			position: { lat, lng },
 		};
 
 		await addNewCity(newCity);
@@ -88,16 +94,17 @@ function Form() {
 
 	if (errorGeocoding) return <Message message={errorGeocoding} />;
 
-	if (!lat && !lng) return;
+	if (!lat && !lng)
+		return <Message message='Start by clicking somewhere on the map' />;
 
 	if (isLoadingGeocoding) return <Spinner />;
 
 	return (
 		<form
 			className={`${styles.form} ${isLoading ? styles.loading : ""}`}
-			onSubmit={handleSubmit}>
+			onSubmit={(e) => handleSubmit(e)}>
 			<div className={styles.row}>
-				<label htmlFor='cityName'>City name</label>
+				<label htmlFor='cityName '>City name</label>
 				<input
 					id='cityName'
 					onChange={(e) => setCityName(e.target.value)}
@@ -113,6 +120,7 @@ function Form() {
 				<DatePicker
 					selected={date}
 					onChange={(date) => setDate(date)}
+					dateFormat='dd/MM/yyyy'
 				/>
 			</div>
 

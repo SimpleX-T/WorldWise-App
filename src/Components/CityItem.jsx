@@ -13,9 +13,15 @@ const formatDate = (date) =>
 
 export default function CityItem({ city }) {
 	const { cityName, emoji, date, id, position } = city;
-	const { lng, lat } = position;
 
-	const { currentCity } = useProvider();
+	const { currentCity, deleteCity } = useProvider();
+
+	function handleDeleteCity(e) {
+		e.preventDefault();
+		if (window.confirm("Are you sure you want to delete this city?"))
+			deleteCity(id);
+		else return;
+	}
 
 	return (
 		<li>
@@ -23,13 +29,15 @@ export default function CityItem({ city }) {
 				className={`${styles.cityItem} ${
 					currentCity.id === id ? styles["cityItem--active"] : ""
 				}`}
-				to={`${id}?lat=${lat}&lng=${lng}`}>
+				to={`${id}?lat=${position.lat}&lng=${position.lng}`}>
 				<span className={styles.emoji}>
 					<ReactCountryFlag countryCode={emoji} svg />
 				</span>
 				<h3 className={styles.name}>{cityName}</h3>
 				<time className={styles.date}>({formatDate(date)})</time>
-				<button className={styles.deleteBtn}>&times;</button>
+				<button className={styles.deleteBtn} onClick={handleDeleteCity}>
+					&times;
+				</button>
 			</Link>
 		</li>
 	);
