@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useEffect } from "react";
-import { useProvider } from "./contexts/ContextProvider";
+import { useCity } from "./contexts/CityProvider";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
 import ReactCountryFlag from "react-country-flag";
@@ -16,7 +16,7 @@ const formatDate = (date) =>
 
 function City() {
 	const { id } = useParams();
-	const { currentCity, getCity, isLoading } = useProvider();
+	const { currentCity, getCity, isLoading } = useCity();
 
 	useEffect(
 		function () {

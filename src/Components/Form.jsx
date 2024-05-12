@@ -10,7 +10,7 @@ import BackButton from "./BackButton";
 import { useGeocoding } from "../hooks/useGeocoding";
 import Message from "./Message";
 import Spinner from "./Spinner";
-import { useProvider } from "./contexts/ContextProvider";
+import { useCity } from "./contexts/CityProvider";
 import { useNavigate } from "react-router-dom";
 import ReactCountryFlag from "react-country-flag";
 
@@ -27,7 +27,7 @@ function Form() {
 	const [lat, lng] = useGeocoding();
 	const [cityName, setCityName] = useState("");
 	const [country, setCountry] = useState("");
-	const { addNewCity, isLoading } = useProvider();
+	const { addNewCity, isLoading } = useCity();
 	const navigate = useNavigate();
 
 	// creating more states. P.S: may be a lil bit confusing in the future though😉

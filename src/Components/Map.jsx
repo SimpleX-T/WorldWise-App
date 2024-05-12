@@ -9,7 +9,7 @@ import {
 	useMapEvents,
 } from "react-leaflet";
 import { useEffect, useState } from "react";
-import { useProvider } from "./contexts/ContextProvider";
+import { useCity } from "./contexts/CityProvider";
 import { useGeolocation } from "../hooks/useGeolocation";
 import Button from "./Button";
 import { useGeocoding } from "../hooks/useGeocoding";
@@ -17,7 +17,7 @@ import ReactCountryFlag from "react-country-flag";
 
 function Map() {
 	const [mapPosition, setMapPosition] = useState([40, -3.7]);
-	const { cities } = useProvider();
+	const { cities } = useCity();
 	const [mapLat, mapLng] = useGeocoding();
 	const {
 		isLoading: isLoadingPosition,

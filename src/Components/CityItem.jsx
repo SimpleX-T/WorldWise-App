@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
-import { useProvider } from "./contexts/ContextProvider";
+import { useCity } from "./contexts/CityProvider";
 import ReactCountryFlag from "react-country-flag";
 
 const formatDate = (date) =>
@@ -14,7 +14,7 @@ const formatDate = (date) =>
 export default function CityItem({ city }) {
 	const { cityName, emoji, date, id, position } = city;
 
-	const { currentCity, deleteCity } = useProvider();
+	const { currentCity, deleteCity } = useCity();
 
 	function handleDeleteCity(e) {
 		e.preventDefault();

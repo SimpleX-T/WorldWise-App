@@ -25,7 +25,7 @@ function reducer(state, action) {
 	}
 }
 
-function ContextProvider({ children }) {
+function CityProvider({ children }) {
 	const [{ cities, isLoading, currentCity }, dispatch] = useReducer(
 		reducer,
 		initialState
@@ -64,8 +64,8 @@ function ContextProvider({ children }) {
 	}
 
 	async function addNewCity(newCity) {
+		dispatch({ type: "setIsLoading", payload: true });
 		try {
-			dispatch({ type: "setIsLoading", payload: true });
 			const res = await fetch(`${BASE_URL}/cities`, {
 				method: "POST",
 				body: JSON.stringify(newCity),
@@ -81,6 +81,7 @@ function ContextProvider({ children }) {
 	}
 
 	async function deleteCity(id) {
+		dispatch({ type: "setIsLoading", payload: true });
 		try {
 			await fetch(`${BASE_URL}/cities/${id}`, {
 				method: "DELETE",
@@ -92,6 +93,8 @@ function ContextProvider({ children }) {
 			// setCities((cities) => cities.filter);
 		} catch (error) {
 			alert("There was an error deleting city");
+		} finally {
+			dispatch({ type: "setIsLoading", payload: false });
 		}
 	}
 
@@ -110,15 +113,13 @@ function ContextProvider({ children }) {
 	);
 }
 
-function useProvider() {
+function useCity() {
 	const context = useContext(Provider);
 
 	if (context === undefined)
-		throw new Error(
-			"useProvider is called outside of the ContextProvider scope"
-		);
+		throw new Error("useCity is called outside of the CityProvider scope");
 	return context;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export { ContextProvider, useProvider };
+export { CityProvider, useCity };
